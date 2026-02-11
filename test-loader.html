@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Content Loader</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 2rem;
+            background: #000;
+            color: #0f0;
+        }
+        .test-result {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 1px solid #0f0;
+        }
+        .success { color: #0f0; }
+        .error { color: #f00; }
+    </style>
+</head>
+<body>
+    <h1>Content Loader Test</h1>
+    <button onclick="testLoad()">Test Load Data</button>
+    <button onclick="location.reload()">Refresh Page</button>
+    
+    <div id="results"></div>
+
+    <script>
+        async function testLoad() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                // Test 1: Can we fetch data.json?
+                const response = await fetch('data.json?t=' + Date.now());
+                results.innerHTML += `<div class="test-result success">✓ data.json loaded (status: ${response.status})</div>`;
+                
+                // Test 2: Can we parse it?
+                const data = await response.json();
+                results.innerHTML += `<div class="test-result success">✓ JSON parsed successfully</div>`;
+                
+                // Test 3: Show the data
+                results.innerHTML += `<div class="test-result">
+                    <strong>Hero Name:</strong> ${data.hero?.name || 'NOT FOUND'}<br>
+                    <strong>Hero Subtitle:</strong> ${data.hero?.subtitle || 'NOT FOUND'}<br>
+                    <strong>Work Items:</strong> ${data.work?.length || 0}<br>
+                    <strong>Email:</strong> ${data.contact?.email || 'NOT FOUND'}
+                </div>`;
+                
+                // Test 4: Full data dump
+                results.innerHTML += `<div class="test-result">
+                    <strong>Full Data:</strong><br>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                </div>`;
+                
+            } catch (error) {
+                results.innerHTML += `<div class="test-result error">✗ Error: ${error.message}</div>`;
+            }
+        }
+        
+        // Auto-run on load
+        window.addEventListener('DOMContentLoaded', testLoad);
+    </script>
+</body>
+</html>

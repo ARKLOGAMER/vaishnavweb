@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Portfolio Editor</title>
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500,400&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Clash Display', sans-serif;
+            background: #f5f5f5;
+            padding: 2rem;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .admin-header {
+            background: #000;
+            color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h1 {
+            font-size: 2rem;
+        }
+
+        .logout-btn {
+            padding: 0.75rem 1.5rem;
+            background: #fff;
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .section-editor {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 2px solid #000;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #000;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #000;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .btn-save {
+            padding: 1rem 2rem;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .btn-save:hover {
+            background: #333;
+        }
+
+        .success-message {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .work-item, .speaking-item, .testimonial-item, .media-item, .faq-item-editor {
+            border: 2px solid #ddd;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .btn-add {
+            padding: 0.75rem 1.5rem;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .btn-remove {
+            padding: 0.5rem 1rem;
+            background: #f44336;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1><i class="fas fa-edit"></i> Portfolio Admin Panel</h1>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <i class="fas fa-check-circle"></i> Changes saved successfully!
+        </div>
+
+        <!-- Hero Section -->
+        <div class="section-editor">
+            <h2 class="section-title">Hero Section</h2>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="heroName" placeholder="Vaishnav H">
+            </div>
+            <div class="form-group">
+                <label>Subtitle</label>
+                <input type="text" id="heroSubtitle" placeholder="Founder & CEO, SCIFY Technologies">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="heroDescription" placeholder="Building R&D solutions..."></textarea>
+            </div>
+            <div class="stats-grid">
+                <div class="form-group">
+                    <label>Stat 1 Number</label>
+                    <input type="text" id="stat1Number" placeholder="₹2L+">
+                </div>
+                <div class="form-group">
+                    <label>Stat 1 Label</label>
+                    <input type="text" id="stat1Label" placeholder="Grants Won">
+                </div>
+                <div class="form-group">
+                    <label>Stat 2 Number</label>
+                    <input type="text" id="stat2Number" placeholder="4+">
+                </div>
+                <div class="form-group">
+                    <label>Stat 2 Label</label>
+                    <input type="text" id="stat2Label" placeholder="Awards">
+                </div>
+                <div class="form-group">
+                    <label>Stat 3 Number</label>
+                    <input type="text" id="stat3Number" placeholder="10+">
+                </div>
+                <div class="form-group">
+                    <label>Stat 3 Label</label>
+                    <input type="text" id="stat3Label" placeholder="Talks">
+                </div>
+            </div>
+            <button class="btn-save" onclick="saveHero()">Save Hero Section</button>
+        </div>
+
+        <!-- About Section -->
+        <div class="section-editor">
+            <h2 class="section-title">About Section</h2>
+            <div class="form-group">
+                <label>Lead Paragraph</label>
+                <textarea id="aboutLead"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Main Paragraph</label>
+                <textarea id="aboutMain"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Skills (comma separated)</label>
+                <input type="text" id="aboutSkills" placeholder="R&D, Product Development, Sustainability">
+            </div>
+            <div class="form-group">
+                <label>Current Role</label>
+                <input type="text" id="currentRole" placeholder="Founder & CEO">
+            </div>
+            <div class="form-group">
+                <label>Company</label>
+                <input type="text" id="currentCompany" placeholder="SCIFY Technologies Pvt Ltd">
+            </div>
+            <button class="btn-save" onclick="saveAbout()">Save About Section</button>
+        </div>
+
+        <!-- Work Section -->
+        <div class="section-editor">
+            <h2 class="section-title">Work Section</h2>
+            <div id="workItems"></div>
+            <button class="btn-add" onclick="addWorkItem()">+ Add Work Item</button>
+            <br><br>
+            <button class="btn-save" onclick="saveWork()">Save Work Section</button>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="section-editor">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="contactEmail" placeholder="contact@scifytech.com">
+            </div>
+            <div class="form-group">
+                <label>LinkedIn URL</label>
+                <input type="url" id="contactLinkedIn" placeholder="https://linkedin.com/in/yourprofile">
+            </div>
+            <div class="form-group">
+                <label>Twitter URL</label>
+                <input type="url" id="contactTwitter" placeholder="https://twitter.com/yourhandle">
+            </div>
+            <button class="btn-save" onclick="saveContact()">Save Contact Info</button>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+{
+  "hero": {
+    "name": "Vaishnav H",
+    "subtitle": "Founder & CEO, SCIFY Technologies",
+    "description": "Building R&D solutions for sustainability and infrastructure. Speaker at IEEE and IEDC events.",
+    "stat1Number": "₹2L+",
+    "stat1Label": "Grants Won",
+    "stat2Number": "4+",
+    "stat2Label": "Awards",
+    "stat3Number": "10+",
+    "stat3Label": "Talks"
+  },
+  "about": {
+    "lead": "I started SCIFY Technologies to work on real problems in sustainability and infrastructure. We focus on R&D that actually gets built and used.",
+    "main": "Beyond running the company, I mentor students at IEEE and IEDC programs, helping them move from ideas to execution. I've spoken at multiple events about building startups from college and making technical projects work in the real world.",
+    "skills": "R&D, Product Development, Sustainability, EV Systems, Mentorship, Public Speaking",
+    "currentRole": "Founder & CEO",
+    "currentCompany": "SCIFY Technologies Pvt Ltd"
+  },
+  "work": [
+    {
+      "badge": "₹2L Grant",
+      "title": "KTU Innovation Grant",
+      "subtitle": "Project Hydra",
+      "description": "Won ₹2 lakh from KTU for developing a water management system. Used it to validate the tech and build a working prototype.",
+      "tags": "R&D, Water Tech",
+      "featured": true
+    },
+    {
+      "badge": "1st Prize",
+      "title": "KREEPA Expo",
+      "subtitle": "",
+      "description": "Won first place at South India's largest renewable energy expo",
+      "tags": "Clean Energy",
+      "featured": false
+    },
+    {
+      "badge": "₹40K Prize",
+      "title": "PROJECT SHIELD",
+      "subtitle": "",
+      "description": "Built an EV battery safety system. Won first prize and ₹40,000",
+      "tags": "EV Tech",
+      "featured": false
+    },
+    {
+      "badge": "Leadership",
+      "title": "IEDC NEST",
+      "subtitle": "",
+      "description": "Selected for IEDC's innovation network. Mentor startups and run workshops",
+      "tags": "Mentorship",
+      "featured": false
+    },
+    {
+      "badge": "Internship",
+      "title": "IIT Palakkad",
+      "subtitle": "Business Development Intern",
+      "description": "Worked on commercializing research at SATCARD Association. Built business models for tech products.",
+      "tags": "Business",
+      "featured": false
+    }
+  ],
+  "contact": {
+    "email": "contact@scifytech.com",
+    "linkedin": "#",
+    "twitter": "#"
+  }
+}
