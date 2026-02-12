@@ -147,6 +147,15 @@
             font-weight: 600;
             margin-top: 0.5rem;
         }
+
+        .custom-section-content {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        #customSections .section-editor {
+            background: #f9f9f9;
+            border: 2px dashed #999;
+        }
     </style>
 </head>
 <body>
@@ -241,6 +250,42 @@
             <button class="btn-save" onclick="saveWork()">Save Work Section</button>
         </div>
 
+        <!-- Speaking Section -->
+        <div class="section-editor">
+            <h2 class="section-title">Speaking & Mentorship Section</h2>
+            <div id="speakingItems"></div>
+            <button class="btn-add" onclick="addSpeakingItem()">+ Add Speaking Item</button>
+            <br><br>
+            <button class="btn-save" onclick="saveSpeaking()">Save Speaking Section</button>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="section-editor">
+            <h2 class="section-title">Testimonials Section</h2>
+            <div id="testimonialItems"></div>
+            <button class="btn-add" onclick="addTestimonialItem()">+ Add Testimonial</button>
+            <br><br>
+            <button class="btn-save" onclick="saveTestimonials()">Save Testimonials Section</button>
+        </div>
+
+        <!-- Media Section -->
+        <div class="section-editor">
+            <h2 class="section-title">Media & Recognition Section</h2>
+            <div id="mediaItems"></div>
+            <button class="btn-add" onclick="addMediaItem()">+ Add Media Item</button>
+            <br><br>
+            <button class="btn-save" onclick="saveMedia()">Save Media Section</button>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="section-editor">
+            <h2 class="section-title">FAQ Section</h2>
+            <div id="faqItems"></div>
+            <button class="btn-add" onclick="addFaqItem()">+ Add FAQ</button>
+            <br><br>
+            <button class="btn-save" onclick="saveFaq()">Save FAQ Section</button>
+        </div>
+
         <!-- Contact Section -->
         <div class="section-editor">
             <h2 class="section-title">Contact Information</h2>
@@ -257,6 +302,14 @@
                 <input type="url" id="contactTwitter" placeholder="https://twitter.com/yourhandle">
             </div>
             <button class="btn-save" onclick="saveContact()">Save Contact Info</button>
+        </div>
+
+        <!-- Custom Sections -->
+        <div class="section-editor">
+            <h2 class="section-title">Custom Sections</h2>
+            <p style="margin-bottom: 1rem; color: #666;">Create your own custom sections for the portfolio</p>
+            <div id="customSections"></div>
+            <button class="btn-add" onclick="addCustomSection()">+ Create New Section</button>
         </div>
     </div>
 

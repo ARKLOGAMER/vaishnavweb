@@ -20,7 +20,12 @@ async function loadAllContent() {
         loadHeroContent(data.hero);
         loadAboutContent(data.about);
         loadWorkContent(data.work);
+        loadSpeakingContent(data.speaking);
+        loadTestimonialsContent(data.testimonials);
+        loadMediaContent(data.media);
+        loadFaqContent(data.faq);
         loadContactContent(data.contact);
+        loadCustomSectionsContent(data.customSections);
         
         console.log('Content loaded successfully!');
     } catch (error) {
@@ -171,5 +176,299 @@ function loadContactContent(contact) {
     console.log('Contact content updated');
 }
 
+function loadSpeakingContent(speaking) {
+    if (!speaking || speaking.length === 0) {
+        console.warn('No speaking data found');
+        return;
+    }
+
+    console.log('Loading speaking content:', speaking.length, 'items');
+
+    const speakingGrid = document.querySelector('.speaking-grid');
+    if (!speakingGrid) {
+        console.error('Speaking grid not found!');
+        return;
+    }
+
+    speakingGrid.innerHTML = speaking.map(item => `
+        <div class="speaking-card ${item.featured ? 'main' : ''}">
+            <div class="speaking-badge">${item.badge}</div>
+            <h3>${item.title}</h3>
+            <p class="speaking-role">${item.role}</p>
+            <p>${item.description}</p>
+            ${item.topics ? `
+                <div class="speaking-topics">
+                    ${item.topics.split(',').map(topic => `<span>${topic.trim()}</span>`).join('')}
+                </div>
+            ` : ''}
+        </div>
+    `).join('');
+    
+    console.log('Speaking content updated');
+}
+
+function loadTestimonialsContent(testimonials) {
+    if (!testimonials || testimonials.length === 0) {
+        console.warn('No testimonials data found');
+        return;
+    }
+
+    console.log('Loading testimonials content:', testimonials.length, 'items');
+
+    const testimonialsGrid = document.querySelector('.testimonials-grid');
+    if (!testimonialsGrid) {
+        console.error('Testimonials grid not found!');
+        return;
+    }
+
+    testimonialsGrid.innerHTML = testimonials.map(item => `
+        <div class="testimonial-card">
+            <p class="testimonial-text">"${item.text}"</p>
+            <div class="testimonial-author">
+                <strong>${item.author}</strong>
+                <span>${item.role}</span>
+            </div>
+        </div>
+    `).join('');
+    
+    console.log('Testimonials content updated');
+}
+
+function loadMediaContent(media) {
+    if (!media || media.length === 0) {
+        console.warn('No media data found');
+        return;
+    }
+
+    console.log('Loading media content:', media.length, 'items');
+
+    const mediaGrid = document.querySelector('.media-grid');
+    if (!mediaGrid) {
+        console.error('Media grid not found!');
+        return;
+    }
+
+    mediaGrid.innerHTML = media.map(item => `
+        <div class="media-card">
+            <div class="media-icon">
+                <i class="fas fa-${item.icon}"></i>
+            </div>
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+            <span class="media-date">${item.date}</span>
+        </div>
+    `).join('');
+    
+    console.log('Media content updated');
+}
+
+function loadFaqContent(faq) {
+    if (!faq || faq.length === 0) {
+        console.warn('No FAQ data found');
+        return;
+    }
+
+    console.log('Loading FAQ content:', faq.length, 'items');
+
+    const faqContainer = document.querySelector('.faq-container');
+    if (!faqContainer) {
+        console.error('FAQ container not found!');
+        return;
+    }
+
+    faqContainer.innerHTML = faq.map(item => `
+        <div class="faq-item">
+            <h3 class="faq-question">${item.question}</h3>
+            <p class="faq-answer">${item.answer}</p>
+        </div>
+    `).join('');
+    
+    console.log('FAQ content updated');
+}
+
+function loadCustomSectionsContent(customSections) {
+    if (!customSections || customSections.length === 0) {
+        console.log('No custom sections to load');
+        return;
+    }
+
+    console.log('Loading custom sections:', customSections.length, 'sections');
+
+    // Find the contact section to insert custom sections before it
+    const contactSection = document.getElementById('contact');
+    if (!contactSection) {
+        console.error('Contact section not found!');
+        return;
+    }
+
+    // Remove any existing custom sections first
+    document.querySelectorAll('.custom-section').forEach(section => section.remove());
+
+    // Insert each custom section before contact
+    customSections.forEach(section => {
+        const sectionElement = document.createElement('section');
+        sectionElement.className = `section custom-section ${section.dark ? 'section-dark' : ''}`;
+        sectionElement.id = section.id;
+        sectionElement.innerHTML = `
+            <div class="container">
+                <h2 class="section-title">${section.title}</h2>
+                <div class="custom-content">
+                    ${section.content}
+                </div>
+            </div>
+        `;
+        contactSection.parentNode.insertBefore(sectionElement, contactSection);
+    });
+    
+    console.log('Custom sections loaded');
+}
+
 // Expose function globally for manual refresh
 window.refreshContent = loadAllContent;
+
+function loadSpeakingContent(speaking) {
+    if (!speaking || speaking.length === 0) {
+        console.warn('No speaking data found');
+        return;
+    }
+
+    console.log('Loading speaking content:', speaking.length, 'items');
+
+    const speakingGrid = document.querySelector('.speaking-grid');
+    if (!speakingGrid) {
+        console.error('Speaking grid not found!');
+        return;
+    }
+
+    speakingGrid.innerHTML = speaking.map(item => `
+        <div class="speaking-card ${item.isMain ? 'main' : ''}">
+            <div class="speaking-badge">${item.badge}</div>
+            <h3>${item.title}</h3>
+            <p class="speaking-role">${item.role}</p>
+            <p>${item.description}</p>
+            ${item.topics ? `
+                <div class="speaking-topics">
+                    ${item.topics.split(',').map(topic => `<span>${topic.trim()}</span>`).join('')}
+                </div>
+            ` : ''}
+        </div>
+    `).join('');
+    
+    console.log('Speaking content updated');
+}
+
+function loadTestimonialsContent(testimonials) {
+    if (!testimonials || testimonials.length === 0) {
+        console.warn('No testimonials data found');
+        return;
+    }
+
+    console.log('Loading testimonials content:', testimonials.length, 'items');
+
+    const testimonialsGrid = document.querySelector('.testimonials-grid');
+    if (!testimonialsGrid) {
+        console.error('Testimonials grid not found!');
+        return;
+    }
+
+    testimonialsGrid.innerHTML = testimonials.map(item => `
+        <div class="testimonial-card">
+            <p class="testimonial-text">"${item.text}"</p>
+            <div class="testimonial-author">
+                <strong>${item.author}</strong>
+                <span>${item.position}</span>
+            </div>
+        </div>
+    `).join('');
+    
+    console.log('Testimonials content updated');
+}
+
+function loadMediaContent(media) {
+    if (!media || media.length === 0) {
+        console.warn('No media data found');
+        return;
+    }
+
+    console.log('Loading media content:', media.length, 'items');
+
+    const mediaGrid = document.querySelector('.media-grid');
+    if (!mediaGrid) {
+        console.error('Media grid not found!');
+        return;
+    }
+
+    mediaGrid.innerHTML = media.map(item => `
+        <div class="media-card">
+            <div class="media-icon">
+                <i class="${item.icon}"></i>
+            </div>
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+            <span class="media-date">${item.date}</span>
+        </div>
+    `).join('');
+    
+    console.log('Media content updated');
+}
+
+function loadFaqContent(faq) {
+    if (!faq || faq.length === 0) {
+        console.warn('No FAQ data found');
+        return;
+    }
+
+    console.log('Loading FAQ content:', faq.length, 'items');
+
+    const faqContainer = document.querySelector('.faq-container');
+    if (!faqContainer) {
+        console.error('FAQ container not found!');
+        return;
+    }
+
+    faqContainer.innerHTML = faq.map(item => `
+        <div class="faq-item">
+            <h3 class="faq-question">${item.question}</h3>
+            <p class="faq-answer">${item.answer}</p>
+        </div>
+    `).join('');
+    
+    console.log('FAQ content updated');
+}
+
+function loadCustomSectionsContent(customSections) {
+    if (!customSections || customSections.length === 0) {
+        console.log('No custom sections to load');
+        return;
+    }
+
+    console.log('Loading custom sections:', customSections.length, 'sections');
+
+    // Find the contact section to insert custom sections before it
+    const contactSection = document.querySelector('#contact');
+    if (!contactSection) {
+        console.error('Contact section not found!');
+        return;
+    }
+
+    // Remove any existing custom sections first
+    document.querySelectorAll('.custom-section').forEach(section => section.remove());
+
+    // Insert each custom section before the contact section
+    customSections.forEach(section => {
+        const sectionElement = document.createElement('section');
+        sectionElement.className = `section custom-section ${section.isDark ? 'section-dark' : ''}`;
+        sectionElement.id = section.id;
+        sectionElement.innerHTML = `
+            <div class="container">
+                <h2 class="section-title">${section.title}</h2>
+                <div class="custom-section-content">
+                    ${section.content}
+                </div>
+            </div>
+        `;
+        contactSection.parentNode.insertBefore(sectionElement, contactSection);
+    });
+    
+    console.log('Custom sections loaded');
+}

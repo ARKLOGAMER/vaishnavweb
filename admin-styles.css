@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Clash Display', sans-serif;
+    background: #f5f5f5;
+    color: #000;
+}
+
+.admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.admin-header {
+    background: #000;
+    color: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-preview,
+.logout-btn {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.btn-preview:hover,
+.logout-btn:hover {
+    opacity: 0.8;
+}
+
+.success-message {
+    background: #000;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: none;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: #fff;
+    border: 2px solid #000;
+    color: #000;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    background: #f0f0f0;
+}
+
+.tab-btn.active {
+    background: #000;
+    color: #fff;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.section-editor {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    border: 2px solid #000;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.section-description {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="url"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    font-family: 'Clash Display', sans-serif;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.btn-save {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    transition: opacity 0.2s;
+}
+
+.btn-save:hover {
+    opacity: 0.8;
+}
+
+.btn-add {
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-add:hover {
+    background: #f0f0f0;
+}
+
+.btn-remove {
+    background: #fff;
+    color: #ff0000;
+    border: 2px solid #ff0000;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-remove:hover {
+    background: #ff0000;
+    color: #fff;
+}
+
+.work-item,
+.speaking-item,
+.testimonial-item,
+.media-item,
+.faq-item-editor,
+.custom-section-item {
+    background: #f9f9f9;
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.work-item h3,
+.speaking-item h3,
+.testimonial-item h3,
+.media-item h3,
+.faq-item-editor h3,
+.custom-section-item h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .admin-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .admin-tabs {
+        justify-content: center;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

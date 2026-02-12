@@ -811,6 +811,357 @@ async function updateGitHubData(section, data) {
     }
 }
 
+// Speaking Section
+function loadSpeaking(speaking = []) {
+    if (speaking.length === 0) {
+        speaking = [
+            {
+                badge: 'IEEE',
+                title: 'IEEE AKIASSC 2025',
+                role: 'Startup Speaker',
+                description: 'Spoke to students about building startups from college.',
+                topics: 'Starting Up, Handling Failure',
+                featured: true
+            }
+        ];
+    }
+
+    const container = document.getElementById('speakingItems');
+    container.innerHTML = '';
+
+    speaking.forEach((item, index) => {
+        container.innerHTML += `
+            <div class="speaking-item" data-index="${index}">
+                <h3>Speaking Item ${index + 1}</h3>
+                <div class="form-group">
+                    <label>Badge</label>
+                    <input type="text" class="speaking-badge" value="${item.badge}">
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="speaking-title" value="${item.title}">
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <input type="text" class="speaking-role" value="${item.role}">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="speaking-description">${item.description}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Topics (comma separated, optional)</label>
+                    <input type="text" class="speaking-topics" value="${item.topics || ''}">
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" class="speaking-featured" ${item.featured ? 'checked' : ''}>
+                        Featured (larger card)
+                    </label>
+                </div>
+                <button class="btn-remove" onclick="removeSpeakingItem(${index})">Remove</button>
+            </div>
+        `;
+    });
+}
+
+function addSpeakingItem() {
+    const container = document.getElementById('speakingItems');
+    const index = container.children.length;
+    
+    container.innerHTML += `
+        <div class="speaking-item" data-index="${index}">
+            <h3>Speaking Item ${index + 1}</h3>
+            <div class="form-group">
+                <label>Badge</label>
+                <input type="text" class="speaking-badge" value="New">
+            </div>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="speaking-title" value="New Event">
+            </div>
+            <div class="form-group">
+                <label>Role</label>
+                <input type="text" class="speaking-role" value="Speaker">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="speaking-description">Description here</textarea>
+            </div>
+            <div class="form-group">
+                <label>Topics (comma separated, optional)</label>
+                <input type="text" class="speaking-topics" value="">
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" class="speaking-featured">
+                    Featured (larger card)
+                </label>
+            </div>
+            <button class="btn-remove" onclick="removeSpeakingItem(${index})">Remove</button>
+        </div>
+    `;
+}
+
+function removeSpeakingItem(index) {
+    const items = document.querySelectorAll('.speaking-item');
+    if (items[index]) {
+        items[index].remove();
+    }
+}
+
+async function saveSpeaking() {
+    const speakingItems = document.querySelectorAll('.speaking-item');
+    const speaking = [];
+
+    speakingItems.forEach(item => {
+        speaking.push({
+            badge: item.querySelector('.speaking-badge').value,
+            title: item.querySelector('.speaking-title').value,
+            role: item.querySelector('.speaking-role').value,
+            description: item.querySelector('.speaking-description').value,
+            topics: item.querySelector('.speaking-topics').value,
+            featured: item.querySelector('.speaking-featured').checked
+        });
+    });
+
+    await updateGitHubData('speaking', speaking);
+}
+
+// Testimonials Section
+function loadTestimonials(testimonials = []) {
+    if (testimonials.length === 0) {
+        testimonials = [
+            {
+                text: 'Great speaker and mentor.',
+                author: 'Student',
+                role: 'IEEE Event'
+            }
+        ];
+    }
+
+    const container = document.getElementById('testimonialItems');
+    container.innerHTML = '';
+
+    testimonials.forEach((item, index) => {
+        container.innerHTML += `
+            <div class="testimonial-item" data-index="${index}">
+                <h3>Testimonial ${index + 1}</h3>
+                <div class="form-group">
+                    <label>Testimonial Text</label>
+                    <textarea class="testimonial-text">${item.text}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Author Name</label>
+                    <input type="text" class="testimonial-author" value="${item.author}">
+                </div>
+                <div class="form-group">
+                    <label>Author Role/Context</label>
+                    <input type="text" class="testimonial-role" value="${item.role}">
+                </div>
+                <button class="btn-remove" onclick="removeTestimonialItem(${index})">Remove</button>
+            </div>
+        `;
+    });
+}
+
+function addTestimonialItem() {
+    const container = document.getElementById('testimonialItems');
+    const index = container.children.length;
+    
+    container.innerHTML += `
+        <div class="testimonial-item" data-index="${index}">
+            <h3>Testimonial ${index + 1}</h3>
+            <div class="form-group">
+                <label>Testimonial Text</label>
+                <textarea class="testimonial-text">Your testimonial text here</textarea>
+            </div>
+            <div class="form-group">
+                <label>Author Name</label>
+                <input type="text" class="testimonial-author" value="Name">
+            </div>
+            <div class="form-group">
+                <label>Author Role/Context</label>
+                <input type="text" class="testimonial-role" value="Role">
+            </div>
+            <button class="btn-remove" onclick="removeTestimonialItem(${index})">Remove</button>
+        </div>
+    `;
+}
+
+function removeTestimonialItem(index) {
+    const items = document.querySelectorAll('.testimonial-item');
+    if (items[index]) {
+        items[index].remove();
+    }
+}
+
+async function saveTestimonials() {
+    const testimonialItems = document.querySelectorAll('.testimonial-item');
+    const testimonials = [];
+
+    testimonialItems.forEach(item => {
+        testimonials.push({
+            text: item.querySelector('.testimonial-text').value,
+            author: item.querySelector('.testimonial-author').value,
+            role: item.querySelector('.testimonial-role').value
+        });
+    });
+
+    await updateGitHubData('testimonials', testimonials);
+}
+
+// Media Section
+function loadMedia(media = []) {
+    if (media.length === 0) {
+        media = [
+            {
+                icon: 'newspaper',
+                title: 'Featured in News',
+                description: 'Coverage of our work',
+                date: '2024'
+            }
+        ];
+    }
+
+    const container = document.getElementById('mediaItems');
+    container.innerHTML = '';
+
+    media.forEach((item, index) => {
+        container.innerHTML += `
+            <div class="media-item" data-index="${index}">
+                <h3>Media Item ${index + 1}</h3>
+                <div class="form-group">
+                    <label>Icon (Font Awesome name: newspaper, trophy, microphone, award, etc.)</label>
+                    <input type="text" class="media-icon" value="${item.icon}">
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="media-title" value="${item.title}">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="media-description">${item.description}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="text" class="media-date" value="${item.date}">
+                </div>
+                <button class="btn-remove" onclick="removeMediaItem(${index})">Remove</button>
+            </div>
+        `;
+    });
+}
+
+function addMediaItem() {
+    const container = document.getElementById('mediaItems');
+    const index = container.children.length;
+    
+    container.innerHTML += `
+        <div class="media-item" data-index="${index}">
+            <h3>Media Item ${index + 1}</h3>
+            <div class="form-group">
+                <label>Icon (Font Awesome name: newspaper, trophy, microphone, award, etc.)</label>
+                <input type="text" class="media-icon" value="newspaper">
+            </div>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="media-title" value="New Media Item">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="media-description">Description here</textarea>
+            </div>
+            <div class="form-group">
+                <label>Date</label>
+                <input type="text" class="media-date" value="2024">
+            </div>
+            <button class="btn-remove" onclick="removeMediaItem(${index})">Remove</button>
+        </div>
+    `;
+}
+
+function removeMediaItem(index) {
+    const items = document.querySelectorAll('.media-item');
+    if (items[index]) {
+        items[index].remove();
+    }
+}
+
+async function saveMedia() {
+    const mediaItems = document.querySelectorAll('.media-item');
+    const media = [];
+
+    mediaItems.forEach(item => {
+        media.push({
+            icon: item.querySelector('.media-icon').value,
+            title: item.querySelector('.media-title').value,
+            description: item.querySelector('.media-description').value,
+            date: item.querySelector('.media-date').value
+        });
+    });
+
+    await updateGitHubData('media', media);
+}
+
+// FAQ Section
+function loadFaq(faq = []) {
+    if (faq.length === 0) {
+        faq = [
+            {
+                question: 'Sample question?',
+                answer: 'Sample answer.'
+            }
+        ];
+    }
+
+    const container = document.getElementById('faqItems');
+    container.innerHTML = '';
+
+    faq.forEach((item, index) => {
+        container.innerHTML += `
+            <div class="faq-item-editor" data-index="${index}">
+                <h3>FAQ ${index + 1}</h3>
+                <div class="form-group">
+                    <label>Question</label>
+                    <input type="text" class="faq-question" value="${item.question}">
+                </div>
+                <div class="form-group">
+                    <label>Answer</label>
+                    <textarea class="faq-answer">${item.answer}</textarea>
+                </div>
+                <button class="btn-remove" onclick="removeFaqItem(${index})">Remove</button>
+            </div>
+        `;
+    });
+}
+
+function addFaqItem() {
+    const container = document.getElementById('faqItems');
+    const index = container.children.length;
+    
+    container.innerHTML += `
+        <div class="faq-item-editor" data-index="${index}">
+            <h3>FAQ ${index + 1}</h3>
+            <div class="form-group">
+                <label>Question</label>
+                <input type="text" class="faq-question" value="Your question here?">
+            </div>
+            <div class="form-group">
+                <label>Answer</label>
+                <textarea class="faq-answer">Your answer here</textarea>
+            </div>
+            <button class="btn-remove" onclick="removeFaqItem(${index})">Remove</button>
+        </div>
+    `;
+}
+
+function removeFaqItem(index) {
+    const items = document.querySelectorAll('.faq-item-editor');
+    if (items[index]) {
+        items[index].remove();
+    }
+}
 
 async function saveFaq() {
     const faqItems = document.querySelectorAll('.faq-item-editor');

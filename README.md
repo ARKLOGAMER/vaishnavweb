@@ -15,15 +15,36 @@
 ### 1. Content Storage
 All content is stored in `data.json` which is committed to GitHub.
 
-### 2. Editing Content
+### 2. Admin Panel Sections
+The admin panel now includes COMPLETE control over ALL sections:
+
+- **Hero Section** - Name, subtitle, description, and stats
+- **About Section** - Lead paragraph, main content, skills, current role
+- **Work Section** - Add/edit/remove work items with badges and tags
+- **Speaking Section** - Manage speaking engagements and events
+- **Testimonials** - Add/edit testimonials from clients and attendees
+- **Media & Press** - Showcase media coverage and recognition
+- **FAQ Section** - Manage frequently asked questions
+- **Contact** - Update email and social media links
+- **Custom Sections** - Create entirely new sections with custom content!
+
+### 3. Editing Content
 1. Go to `yoursite.com/login.html`
 2. Login with admin credentials
-3. Edit any section
-4. Click "Save"
-5. Changes push to GitHub automatically
-6. Website updates in 1-2 minutes
+3. Navigate between sections using tabs
+4. Edit any section, add or remove items
+5. Click "Save"
+6. Changes push to GitHub automatically
+7. Website updates in 1-2 minutes
 
-### 3. GitHub Token Setup
+### 4. Custom Sections Feature
+Create unlimited custom sections with:
+- Custom titles and IDs
+- HTML content support
+- Light or dark backgrounds
+- Automatic insertion before Contact section
+
+### 5. GitHub Token Setup
 First time you login to admin panel, you'll need a GitHub Personal Access Token:
 
 1. Go to: https://github.com/settings/tokens
@@ -42,8 +63,9 @@ First time you login to admin panel, you'll need a GitHub Personal Access Token:
 ├── content-loader.js       # Loads data.json into website
 ├── data.json              # ALL CONTENT (edit via admin)
 ├── login.html             # Admin login page
-├── admin.html             # Admin panel
-├── admin.js               # Admin functionality
+├── admin.html             # Admin panel with tabs
+├── admin.js               # Admin functionality (all sections)
+├── admin-styles.css       # Admin panel styling
 ├── test-loader.html       # Test if content loads
 └── dp.png                 # Profile image
 ```

@@ -59,9 +59,109 @@
       "featured": false
     }
   ],
+  "speaking": [
+    {
+      "badge": "IEEE",
+      "title": "IEEE AKIASSC 2025",
+      "role": "Startup Speaker",
+      "description": "Spoke to students about building startups from college. Shared real experiences from running SCIFY and what actually works vs what sounds good.",
+      "topics": "Starting Up, Handling Failure, Building Teams, Getting Things Done",
+      "isMain": true
+    },
+    {
+      "badge": "IEEE",
+      "title": "IEEE Events",
+      "role": "Mentor",
+      "description": "Regular speaker at IEEE forums on moving from college projects to real products",
+      "topics": "",
+      "isMain": false
+    },
+    {
+      "badge": "IEDC",
+      "title": "IEDC UKFCET",
+      "role": "Beyond Classrooms",
+      "description": "Bootcamp speaker on building startups while still in college",
+      "topics": "",
+      "isMain": false
+    },
+    {
+      "badge": "IEDC",
+      "title": "IEDC Programs",
+      "role": "Mentor",
+      "description": "Run workshops and mentor student founders at IEDC events",
+      "topics": "",
+      "isMain": false
+    }
+  ],
+  "testimonials": [
+    {
+      "text": "Vaishnav's session at IEEE was eye-opening. He didn't just talk theory - he shared real failures and wins from building SCIFY. That honesty is rare.",
+      "author": "Student Attendee",
+      "position": "IEEE AKIASSC 2025"
+    },
+    {
+      "text": "His mentorship helped us move from a college project to something investors actually wanted to see. He's practical, not preachy.",
+      "author": "Startup Founder",
+      "position": "IEDC Mentee"
+    },
+    {
+      "text": "Working with Vaishnav at IIT Palakkad showed me how R&D actually becomes business. He bridges that gap really well.",
+      "author": "Colleague",
+      "position": "SATCARD Association"
+    }
+  ],
+  "media": [
+    {
+      "icon": "fas fa-newspaper",
+      "title": "Featured in Local Tech News",
+      "description": "Coverage of SCIFY Technologies and Project Hydra's KTU grant win",
+      "date": "2024"
+    },
+    {
+      "icon": "fas fa-trophy",
+      "title": "KREEPA Expo Winner",
+      "description": "First prize at South India's largest renewable energy exhibition",
+      "date": "2024"
+    },
+    {
+      "icon": "fas fa-microphone",
+      "title": "IEEE Speaker Series",
+      "description": "Regular invited speaker at IEEE student chapters across Kerala",
+      "date": "2024-2025"
+    },
+    {
+      "icon": "fas fa-award",
+      "title": "IEDC NEST Selection",
+      "description": "Selected for Kerala's premier innovation and entrepreneurship network",
+      "date": "2024"
+    }
+  ],
+  "faq": [
+    {
+      "question": "What does SCIFY Technologies do?",
+      "answer": "We build R&D solutions for sustainability and infrastructure challenges. Focus is on making tech that actually gets used, not just prototypes that sit on shelves."
+    },
+    {
+      "question": "Are you available for speaking events?",
+      "answer": "Yes. I speak at college events, IEEE chapters, and startup bootcamps. Topics include startup building, R&D commercialization, and student entrepreneurship. Email me with event details."
+    },
+    {
+      "question": "Do you mentor individual founders?",
+      "answer": "I mentor through IEDC programs and occasionally take on individual mentees. Best fit is student founders working on technical products. Reach out with what you're building."
+    },
+    {
+      "question": "What kind of projects are you open to?",
+      "answer": "Sustainability, clean energy, infrastructure tech, and EV systems. Interested in partnerships where we can bring R&D expertise and execution capability."
+    },
+    {
+      "question": "How can I work with SCIFY?",
+      "answer": "We're open to consulting projects, research collaborations, and partnerships. Email with your project details and we'll see if there's a fit."
+    }
+  ],
   "contact": {
     "email": "contact@scifytech.com",
     "linkedin": "#",
     "twitter": "#"
-  }
+  },
+  "customSections": []
 }
